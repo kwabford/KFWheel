@@ -1,0 +1,12 @@
+source 'https://github.com/CocoaPods/Specs.git'
+use_frameworks!
+
+target 'KFWheel_Example', :exclusive => true do
+  pod "KFWheel", :path => "../"
+end
+
+target 'KFWheel_Tests', :exclusive => true do
+  pod "KFWheel", :path => "../"
+
+  
+end
