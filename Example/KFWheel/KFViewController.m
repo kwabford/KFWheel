@@ -7,7 +7,7 @@
 //
 
 #import "KFViewController.h"
-#import "KFWheel.h"
+#import <KFWheel/KFWheel.h>
 
 @interface KFViewController ()
 

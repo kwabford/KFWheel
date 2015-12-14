@@ -17,7 +17,7 @@ Pod::Spec.new do |s|
 #   * Write the description between the DESC delimiters below.
 #   * Finally, don't worry about the indent, CocoaPods strips it!  
   s.description      = <<-DESC
-A Jog/Shuttle Wheel UIControl subclass. Transfers angular velocity to wheel after user swipes.
+                        A Jog/Shuttle Wheel UIControl subclass. Transfers angular velocity to wheel after user swipes.
                        DESC
 
   s.homepage         = "https://github.com/kwabford/KFWheel"
@@ -27,7 +27,7 @@ A Jog/Shuttle Wheel UIControl subclass. Transfers angular velocity to wheel afte
   s.source           = { :git => "https://github.com/kwabford/KFWheel.git", :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/kwabford'
 
-  s.platform     = :ios, '9.0'
+  s.platform     = :ios, '7.0'
   s.requires_arc = true
 
   s.source_files = 'Pod/Classes/**/*'
