@@ -7,8 +7,11 @@
 //
 
 #import "KFViewController.h"
+#import "KFWheel.h"
 
 @interface KFViewController ()
+
+@property (strong, nonatomic) IBOutlet UILabel *wheelLabel;
 
 @end
 
@@ -24,6 +27,10 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)onValueChanged:(KFWheel *)sender {
+    self.wheelLabel.text = [NSString stringWithFormat:@"Wheel Value:\n%.3f", sender.value];
 }
 
 @end
