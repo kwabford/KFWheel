@@ -24,6 +24,7 @@
     
     CGFloat _innerRadius;
     CGFloat _outerRadius;
+    CGFloat _touchPadding;
     
     NSTimer *knobTransformPollingTimer;
     UIAttachmentBehavior* attachmentBehavior;
@@ -107,6 +108,7 @@
     
     _outerRadius  = size/2;
     _innerRadius = (6 * _outerRadius)/10;
+    _touchPadding = 20.0;   // Allow 20.0 of touch forgivness
     _midPoint = [self convertPoint:self.center fromView:self.superview];
     
     
@@ -182,7 +184,17 @@
 
 -(void) setValue:(float)value
 {
-    _value = value;
+    if (value <= self.minimumValue) {
+        _value = self.minimumValue;
+
+    } else {
+        _value = value;
+        
+        // Seems redundant but adding so that when targets update the value,
+        // the transform will update accordingly
+        _cumulatedAngle = _value * (2 * M_PI);
+        self.knobRotatingView.transform = CGAffineTransformMakeRotation(_cumulatedAngle);
+    }
     
     [self sendActionsForControlEvents:UIControlEventValueChanged];
 }
@@ -256,7 +268,7 @@
         self.knobRotatingView.transform = CGAffineTransformMakeRotation(_cumulatedAngle);
         
         // Update Value if between min and max values
-        CGFloat convertedValue = _cumulatedAngle / (2 * M_PI);
+//        CGFloat convertedValue = _cumulatedAngle / (2 * M_PI);
 //        if (self.minimumValue <= convertedValue  && convertedValue <= self.maximumValue ) {
         self.value = _cumulatedAngle / (2 * M_PI);
 //        }
@@ -285,7 +297,10 @@
         rotationBehaviour = [[UIDynamicItemBehavior alloc] initWithItems:@[self.knobRotatingView]];
         rotationBehaviour.allowsRotation = YES;
         rotationBehaviour.friction = 0;
-        rotationBehaviour.angularResistance = self.angularResistance;
+        
+        CGFloat scaledAngularResistance = MAX(21 - ABS(_angularVelocity), _angularResistance);
+        rotationBehaviour.angularResistance = scaledAngularResistance;
+        
         [rotationBehaviour addAngularVelocity:_angularVelocity forItem:self.knobRotatingView];
         
         [self.animator addBehavior:rotationBehaviour];
@@ -332,7 +347,7 @@
 - (BOOL) pointIsValid:(CGPoint) p
 {
     CGFloat distance = [self distanceBetweenPointsA:_midPoint andB:p];
-    return _innerRadius <= distance && distance <= _outerRadius;
+    return _innerRadius - _touchPadding <= distance && distance <= _outerRadius + _touchPadding;
 }
 
 - (void) addSnapIfNeeded
@@ -371,8 +386,9 @@
     
     
     
+//    if (_cumulatedAngle < self.minimumValue * (2 * M_PI)) {
     if (_cumulatedAngle < self.minimumValue * (2 * M_PI)) {
-        
+    
         [self addSnapIfNeeded];
         
         _cumulatedAngle = self.minimumValue * (2 * M_PI);

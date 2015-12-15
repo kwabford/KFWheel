@@ -12,6 +12,7 @@
 @interface KFViewController ()
 
 @property (strong, nonatomic) IBOutlet UILabel *wheelLabel;
+@property (strong, nonatomic) IBOutlet KFWheel *wheel;
 
 @end
 
@@ -33,4 +34,7 @@
     self.wheelLabel.text = [NSString stringWithFormat:@"Wheel Value:\n%.3f", sender.value];
 }
 
+- (IBAction)testSetWheelValue:(UIButton *)sender {
+    self.wheel.value = 10.5;
+}
 @end

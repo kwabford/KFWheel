@@ -50,18 +50,32 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RXB-X4-6KK">
+                                <rect key="frame" x="244" y="320" width="112" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="112" id="Wsb-j2-CLy"/>
+                                    <constraint firstAttribute="height" constant="30" id="bGm-TF-O7V"/>
+                                </constraints>
+                                <state key="normal" title="set value to 10"/>
+                                <connections>
+                                    <action selector="testSetWheelValue:" destination="whP-gf-Uak" eventType="touchUpInside" id="yjJ-lQ-tUv"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="RXB-X4-6KK" firstAttribute="centerX" secondItem="TpU-gO-2f1" secondAttribute="centerX" id="9YP-Lz-gap"/>
                             <constraint firstItem="sx2-9i-L51" firstAttribute="centerX" secondItem="TpU-gO-2f1" secondAttribute="centerX" id="C2Z-dJ-Ngv"/>
                             <constraint firstItem="8yJ-JX-UCH" firstAttribute="centerX" secondItem="TpU-gO-2f1" secondAttribute="centerX" id="XL8-oM-ARP"/>
                             <constraint firstItem="8yJ-JX-UCH" firstAttribute="leading" secondItem="TpU-gO-2f1" secondAttribute="leadingMargin" id="mWG-J7-lw9"/>
                             <constraint firstItem="8yJ-JX-UCH" firstAttribute="centerY" secondItem="TpU-gO-2f1" secondAttribute="centerY" id="mql-Db-ckO"/>
+                            <constraint firstItem="RXB-X4-6KK" firstAttribute="top" secondItem="sx2-9i-L51" secondAttribute="bottom" constant="-34" id="wVm-be-TpA"/>
                             <constraint firstItem="sx2-9i-L51" firstAttribute="centerY" secondItem="TpU-gO-2f1" secondAttribute="centerY" id="wwY-4G-kWo"/>
                             <constraint firstItem="8yJ-JX-UCH" firstAttribute="trailing" secondItem="TpU-gO-2f1" secondAttribute="trailingMargin" id="xHF-ba-VRR"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="wheel" destination="8yJ-JX-UCH" id="Id9-98-C6n"/>
                         <outlet property="wheelLabel" destination="sx2-9i-L51" id="gJM-sL-Joy"/>
                     </connections>
                 </viewController>
