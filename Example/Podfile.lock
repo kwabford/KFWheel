@@ -1,0 +1,14 @@
+PODS:
+  - KFWheel (0.1.0)
+
+DEPENDENCIES:
+  - KFWheel (from `../`)
+
+EXTERNAL SOURCES:
+  KFWheel:
+    :path: ../
+
+SPEC CHECKSUMS:
+  KFWheel: 93e735e088198b56fa10b4317b51aad50e61f96c
+
+COCOAPODS: 0.39.0
