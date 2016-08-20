@@ -19,19 +19,19 @@
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
+  [super viewDidLoad];
   [KFWheel class];
 	// Do any additional setup after loading the view, typically from a nib.
 }
 
 - (void)didReceiveMemoryWarning
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+  [super didReceiveMemoryWarning];
+  // Dispose of any resources that can be recreated.
 }
 
 - (IBAction)onValueChanged:(KFWheel *)sender {
-    self.wheelLabel.text = [NSString stringWithFormat:@"Wheel Value:\n%.3f", sender.value];
+  self.wheelLabel.text = [NSString stringWithFormat:@"Wheel Value:\n%.3f", sender.value];
 }
 
 @end

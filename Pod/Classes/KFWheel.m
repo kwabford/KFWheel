@@ -191,6 +191,12 @@
 
 #pragma mark - Handling Touches
 
+- (BOOL)pointInside:(CGPoint)point
+          withEvent:(UIEvent *)event
+{
+  return [self pointIsValid:point];
+}
+
 - (BOOL)beginTrackingWithTouch:(UITouch *)touch withEvent:(UIEvent *)event
 {
     
@@ -418,7 +424,7 @@
     CGFloat h, s, b, a;
     [self.tintColor getHue:&h saturation:&s brightness:&b alpha:&a];
     
-    for (int i = 0; i < 10; i++) {
+    for (int i = 0; i < 3; i++) {
         [colors addObject:(id)[[UIColor colorWithHue:h saturation:1 brightness: pow(0.8, i) alpha:1] CGColor]];
     }
     _knobTrackGradientLayer.colors = colors;
