@@ -63,7 +63,6 @@
 
 - (void) initShared
 {
-//    self.backgroundColor = self.tintColor;
     self.orientationMarkerColor = [UIColor redColor];
     
     self.value = 0.0;
@@ -76,22 +75,10 @@
     self.animator = [[UIDynamicAnimator alloc] initWithReferenceView:self];
     self.animator.delegate = self;
     self.angularResistance = 1.0;
-    
-    // Set up orientation marker
-    
-//    CGFloat mSize = size/6;
-//    
-//    self.orientationMarker = [[UIView alloc] init];
-//    
-//    self.orientationMarker.frame = CGRectMake(size/2, 0.0, mSize, mSize);;
-//    self.orientationMarker.backgroundColor = self.orientationMarkerColor;
-//    
-//    [self addSubview:self.orientationMarker];
 }
 
 - (void)tintColorDidChange
 {
-//    self.backgroundColor = self.tintColor;
     [self updateGradient];
 }
 
@@ -120,9 +107,6 @@
     [attachmentBehavior setFrequency:0];
     
     [self.animator addBehavior:attachmentBehavior];
-
-    
-//    attachmentBehavior.anchorPoint = _midPoint;
     
     CGFloat calculatedRadius = _innerRadius + ((_outerRadius - _innerRadius)/2);
     
@@ -133,10 +117,6 @@
                                                           startAngle: M_PI
                                                             endAngle: M_PI + (2 * M_PI)
                                                            clockwise: YES];
-
-    
-//    [_knobTrackGradientLayer removeFromSuperlayer];
-//    _knobTrackGradientLayer = nil;
     
     if (_knobTrackGradientLayer == nil)
     {
@@ -425,7 +405,10 @@
     [self.tintColor getHue:&h saturation:&s brightness:&b alpha:&a];
     
     for (int i = 0; i < 3; i++) {
-        [colors addObject:(id)[[UIColor colorWithHue:h saturation:1 brightness: pow(0.8, i) alpha:1] CGColor]];
+        [colors addObject:(id)[[UIColor colorWithHue:h
+                                          saturation:s
+                                          brightness:pow(1.5, i)
+                                               alpha:a] CGColor]];
     }
     _knobTrackGradientLayer.colors = colors;
 }
